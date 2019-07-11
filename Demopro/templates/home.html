@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+
+{% block content %}
+
+
+	<!-- <center><h3 style="font-family:Book Antiqua;"><b>Home Page</b></h3></center> -->
+
+  <meta charset="UTF-8">
+  <title>Flickr Shelf</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Istok+Web);
+html, body {
+  background: #347AA8;
+  margin: 0;
+  padding: 0;
+}
+
+#links {
+  margin: 10px 0 0 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+#links li {
+  font-family: 'IstokWeb', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background: #326696;
+  color: #A9BED1;
+  width: 100px;
+  height: 30px;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  line-height: 30px;
+}
+#links li:hover {
+  background: #285783;
+}
+
+#about-page {
+  width: 100%;
+  padding: 30px;
+  border-bottom: 1px solid #3D6A94;
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 100;
+  background: #347AA8;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+}
+
+#stage {
+  margin: 40px auto 0 auto;
+  padding: 0;
+  width: 90%;
+  position: relative;
+}
+#stage .shelf {
+  z-index: 2;
+  margin-top: 30px;
+  width: 100%;
+  height: 100px;
+  position: relative;
+}
+#stage .shelf:after, #stage .shelf .surface:before {
+  width: 100%;
+  content: "";
+  position: absolute;
+  display: block;
+}
+#stage .shelf:after {
+  height: 10px;
+  background: #43803B;
+  bottom: 0;
+}
+#stage .shelf .surface {
+  width: 100%;
+  top: 50px;
+  -webkit-perspective: 150px;
+  /* Chrome, Safari, Opera  */
+  perspective: 150px;
+  position: relative;
+}
+#stage .shelf .surface .photos {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+#stage .shelf .surface .photos .photo {
+  background: #888;
+  margin-top: -60px;
+  display: inline-block;
+  width: 100px;
+  height: 70px;
+  border: 5px solid #000000;
+}
+#stage .shelf .surface .photos .photo:not(:last-child) {
+  margin-right: 10px;
+}
+#stage .shelf .surface:before {
+  height: 40px;
+  background: #66A05E;
+  -webkit-transform: rotateX(20deg);
+  /* Chrome, Safari, Opera  */
+  transform: rotateX(20deg);
+  transform-origin: center bottom 0;
+  -ms-transform-origin: center bottom 0;
+  /* IE 9 */
+  -webkit-transform-origin: center bottom 0;
+  /* Chrome, Safari, Opera */
+}
+
+</style>
+
+<body>
+
+  <!--<script type="text/javascript" src="https://underscorejs.org/underscore.js"></script>
+<script type="text/javascript" src="https://backbonejs.org/backbone.js"></script>-->
+<header>
+<nav>
+  <ul id="links">
+    <li id="about">About</li>
+  </ul>
+</nav>
+</head>
+<div id="about-page">Hai Freinds Welcome to Mypage ... Hope i'm Happy for Visting my site ..... For Any Suggestions Pls register Contact Page And give me your valuable feedback</div>
+<section id="stage">
+</section>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script>
+    	var start = function(rows) {
+  if($('.loading').length === 0) {
+    $('#stage').prepend('<div class="loading">Loading...</div>');
+  }
+  var url =  'https://api.flickr.com/services/rest/?&method=flickr.photos.getRecent&api_key=cfdeff44aaa9df390da5aea911a99db7&format=json';
+  $.ajax({
+    dataType: "jsonp",
+    url: url,
+    jsonp: true,
+    jsonpCallback: 'jsonFlickrApi'
+  }).done(function(data){
+    calcShelves(data);
+  });
+};
+
+var calcShelves = function(pics){
+  $('#stage').html("");
+  var rows = (($(window).height() - 180)/150);
+  var shelvesN = rows > 3 ? rows: 3;
+  var shelves = '';
+  var picsPerShelf = $('body').width()*.9 / 160;
+  var pid = 0;
+  var photos = pics.photos.photo;
+  for(var i = 0; i < shelvesN; i++) 
+  {
+     shelves += '<div class="shelf">';
+     shelves += '<div class="surface">';
+     shelves += '<div class="photos">';
+     for(var ii = 0; ii < picsPerShelf; ii++) {
+       shelves += '<div class="photo" style="background-image: url(http://farm'+photos[pid].farm+'.static.flickr.com/'+photos[pid].server+'/'+photos[pid].id+'_'+photos[pid].secret+'_s.jpg);"></div>';
+       pid++;
+     }
+     shelves += '</div>';
+     shelves += '</div>';
+     shelves += '</div>';
+  }
+  $('#stage').append(shelves);
+};
+
+$(document).ready(start);
+$(window).resize(start);
+$('#about').on('click',function(){
+  $('#about-page').slideToggle();
+});
+    </script>
+
+
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FeedBack</title>
+	
+</head>
+<body>
+
+{% block content %}
+<div class="container">
+<div class="row">
+ 	<div class="offset-md-3  col-md-6">
+
+ 	{% if fdata %}
+ 		<h3 style="font-family:Book Antiqua;"> Your Feedback's are ....</h3>
+ 	{% endif %}
+
+ 	{% if fdata %}
+ 		{% for i in fdata %}
+
+ 			{% if i.rating >= 6 and i.rating <= 10 %}
+ 				<div class="textfile2">
+			 		<b>NAME : {{ i.name }}</b><br>
+			 		RATING : {{ i.rating }}<br>
+			 		DATE : {{ i.date }}<br>
+			 		FEEDBACK : {{ i.feedback }}<br><hr>
+			 	</div>
+		 	{% endif %}
+
+ 		{% endfor %}
+
+
+ 	{% else %}
+ 		<h3 id= name2>No Feedbacks are Avaliable</h3>
+
+ 	{% endif %}
+
+
+
+
+
+ 		<form method="POST">
+ 			{% csrf_token %}
+ 			<h3 id = name1>Please Enter Your Valuable Feedback :</h3>
+ 			{{fform}}<br>
+ 			<center>
+ 				<input type="submit" value="send" class="btn btn-success">
+ 				<input type="reset" value="clear" class="btn btn-danger">
+ 			</center>
+ 		</form>
+ 	</div>
+ </div>
+</div>
+
+
+{% endblock %}
+
+</body>
+</html>

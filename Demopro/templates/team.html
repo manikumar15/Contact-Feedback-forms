@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %} 
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>team</title>
+	
+	
+</head>
+<body>
+
+{% block content %}
+
+<!-- <center><h2 style="font-family:Book Antiqua; color: red"><b>Our Team Page</b></h2></center> -->
+<div class="team">
+	<h1>Our Team</h1>
+	<span class="sp1"></span>
+	<div class="pics">
+		<a href="#p1"><img src="{% static 'images/1.jpg' %}"></a>
+		<a href="#p2"><img src="{% static 'images/2.jpg' %}"></a>
+		<a href="#p3"><img src="{% static 'images/3.jpg' %}"></a>
+	</div>
+	<div class="section" id="p1">
+		<h1 class="name">Neeraja</h1>
+		<span class="sp1"></span>
+		<center><p> By the term faculty, we mean a body of educators, i.e. professors, or teachers, whose aim is to impart knowledge to the learners at the school, college or university. </p></center>
+	</div>
+
+	<div class="section" id="p2">
+		<h1 class="name">Priyanka</h1>
+		<span class="sp1"></span>
+		<center><p> A set of classes or a plan of study on a particular subject, usually leading to an exam or qualification: </p></center>
+	</div>
+
+
+	<div class="section" id="p3">
+		<h1 class="name">Parvathi</h1>
+		<span class="sp1"></span>
+		<center><p> A line of thought in the management field which stresses the interactive nature and interdependence of external and internal factors in an organization. A systems approach is commonly used  </p></center>
+	</div>
+</div>
+             
+{% endblock %}
+
+</body>
+</html>

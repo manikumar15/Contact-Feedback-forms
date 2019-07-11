@@ -1,0 +1,150 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>Website</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/lightbox.min.css' %}">
+	  <link href="{% static 'css/team.css' %}" rel="stylesheet" />
+	  <script type="text/javascript" src ="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+
+	<style>
+		/*.footer {
+		   position: fixed;
+		   left: 0;
+		   bottom: 0;
+		   width: 100%;
+		   background-color: #333;
+		   color: white;
+		   text-align: center;
+		}
+		body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}*/
+
+/*.topnav {
+
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnavright a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: orange;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}*/
+.navbar {
+  overflow: hidden;
+  background-color: green;
+  /*position: fixed;*/
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: orange;
+  color: grey;
+}
+.textfile{
+	text-shadow: 3px 3px 3px red;
+	font-size: 50px;
+	
+	padding: 16px;
+	margin-top: 50px;
+	height: 100px; 
+	}
+	.textfile2{
+	color: green;
+	font-size: 15px;
+	
+	padding: 6px;
+	margin-top: 10px;
+	}
+	#name1{
+		color: red;
+	}
+	#name2{
+		color: green;
+
+	}
+	
+
+	
+</style>
+</head>
+<nav>
+	<div class="navbar">
+		<div>
+		  <!-- <a href="register">Register</a> -->
+		  <img src="{% static 'images/paytm.png' %}" style="width: 10%; height: 10%">
+		</div>
+		<div class="topnavright">
+		  
+		  <a class="active" href="home">Home</a>
+		  <a href="courses">Courses</a>
+		  <a href="ourgallery">Gallery</a>
+		  <a href="team">Team</a>
+		  <a href="contact">Contact</a>
+		  <a href="feedback">FeedBack</a>
+		</div>
+	</div>
+
+
+</nav>
+<center>
+	<div class="textfile">
+		<!-- <marquee><i><p>Welcome To My Site ...</p></i></marquee> -->
+		<marquee style="font-family:Book Antiqua;"  scrollamount="20">Welcome To My Site ...</marquee>
+	</div>
+</center>
+
+
+	{% block content %}
+	<!-- <li style="list-style-type: none";></li> -->
+	{% endblock %}
+
+
+
+	<!-- <div class="footer">
+  		<p><h1>.....    THANK YOU   .....</h1></p>
+	</div>	 -->
+
+</html>

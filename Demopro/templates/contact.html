@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact</title>
+</head>
+<style>
+</style>
+<body>
+
+{% block content %}
+<style>
+	ul{
+		list-style-type: none;
+	}
+</style>
+<div class="container">
+	<div class="row">
+ 		<div class="offset-md-3  col-md-6">
+ 			<form method="POST">
+	 			{% csrf_token %}
+	 			<h3 id = name1 style="font-family:Book Antiqua; color: red">Contact Page :</h3>
+	 			{{cform}}<br>
+	 			<center>
+	 				<input type="submit" value="submit" class="btn btn-success">
+	 				<input type="reset" value="clear" class="btn btn-danger">
+	 			</center>
+ 			</form>
+ 		</div>
+ 	</div>
+ </div>
+
+
+{% endblock %}
+
+
+</body>
+</html>
